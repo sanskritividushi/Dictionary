@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Add this CSS code to your existing styles or create a new CSS file */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  width: 50%;
+  margin: 10% auto;
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.searchTerm {
+  width: 70%;
+  padding: 10px;
+  border: 2px solid #00B4CC;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.searchButton {
+  width: 30%;
+  padding: 10px;
+  background-color: #00B4CC;
+  border: 2px solid #00B4CC;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+h3 {
+  margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+  <div class="wrap">
+      <div class="search">
+          <form action="{% url 'word' %}" method="get">
+              <input type="text" name="search" class="searchTerm" placeholder="Input Your Word Here" value="{{ request.GET.search }}">
+              <button type="submit" class="searchButton">
+                  <i class="fa fa-search"></i>
+              </button>
+          </form>
+      </div>
+      <h3>Meaning: {{ meaning }}</h3>
+
+      <h3>Synonyms: {% for synonym in synonyms %}
+          {{ synonym }},
+      {% endfor %}</h3>
+
+      <h3>Antonyms: {% for antonym in antonyms %}
+          {{ antonym }},
+      {% endfor %}</h3>
+      
+      <!-- {% if meaning %}
+          <h3>Meaning: {{ meaning }}</h3>
+      {% endif %}
+
+      {% if synonyms %}
+          <h3>Synonyms: {% for synonym in synonyms %}
+              {{ synonym }},
+          {% endfor %}</h3>
+          {% else %}
+              <h3>Synonyms: None</h3>
+      {% endif %}
+
+      {% if antonyms %}
+          <h3>Antonyms: {% for antonym in antonyms %}
+              {{ antonym }},
+          {% endfor %}</h3>
+          {% else %}
+              <h3>Antonyms: None</h3>
+      {% endif %} -->
+  </div>
+</body>
+</html>
